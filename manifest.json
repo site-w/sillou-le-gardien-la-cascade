@@ -1,0 +1,18 @@
+{
+  "name": "Sillans-la-Cascade",
+  "short_name": "Sillans",
+  "description": "Jeu de piste et découverte du village de Sillans-la-Cascade",
+  "start_url": "/sillans/index.html",
+  "scope": "/sillans/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#8b9616",
+  "theme_color": "#8b9616",
+  "lang": "fr",
+  "icons": [
+    { "src": "images/SILLOU_favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "images/SILLOU_favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" },
+    { "src": "images/gee.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "images/gee.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

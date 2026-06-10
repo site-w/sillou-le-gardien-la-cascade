@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#8b9616">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="images/SILLOU_favicon.svg">
+  <link rel="apple-touch-icon" href="images/SILLOU_favicon.svg">
+  <title>Sillans - Librairie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="nav-page">
+  <main class="loading-screen nav-page-shell library-shell" aria-label="Page librairie mobile">
+    <section class="library-hero" aria-label="En-tête librairie">
+      <div class="library-hero__content">
+        <h1 class="library-hero__title">La collection de Sillou</h1>
+        <p class="library-hero__text">
+          <span>Sillou a rassemblé les trésors de Sillans :</span>
+          <span><strong>animaux, plantes</strong> et <strong> historiques.</strong></span>
+          <span>Explore, apprends et deviens</span>
+          <span><strong>le gardien du village</strong>.</span>
+        </p>
+      </div>
+
+      <div class="library-hero__mascot-wrap" aria-hidden="true">
+        <img class="library-hero__mascot" src="images/sillou1.png" alt="">
+      </div>
+    </section>
+
+    <section class="library-content" aria-label="Contenu de la librairie">
+      <div class="library-filters" aria-label="Filtres librairie">
+        <button class="filter__item is-active" type="button" data-filter="all">Tout</button>
+        <button class="filter__item" type="button" data-filter="animal">Animaux</button>
+        <button class="filter__item" type="button" data-filter="plante">Plantes</button>
+        <button class="filter__item" type="button" data-filter="histoire">Histoire</button>
+      </div>
+
+      <section class="library-cards" aria-label="Cartes de contenus">
+        <article class="library-card" data-tags="animal,oiseau">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/rollier1.png" alt="Rollier d’Europe">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio du Rollier d’Europe">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/rollier.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Animal</span>
+              <span>Oiseau</span>
+            </div>
+
+            <h2 class="library-card__title">Rollier d’Europe</h2>
+            <p class="library-card__text">Le rollier d’Europe est un oiseau aux couleurs bleu turquoise éclatantes. Grand voyageur, il parcourt chaque année des milliers de kilomètres entre l’Afrique et l’Europe.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="animal,mammifere">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/sanglier.png" alt="Sanglier">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio du Sanglier">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/sanglier.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Animal</span>
+              <span>Mammifère</span>
+            </div>
+
+            <h2 class="library-card__title">Sanglier</h2>
+            <p class="library-card__text">Le sanglier est un animal robuste et discret qui vit dans les forêts et les garrigues. Très intelligent, il sort surtout la nuit pour chercher sa nourriture.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="plante,fleur">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/ophrys.png" alt="Ophrys miroir">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio de l’Ophrys miroir">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/Ophrys-miroir.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Plante</span>
+              <span>Fleur</span>
+            </div>
+
+            <h2 class="library-card__title">Ophrys miroir</h2>
+            <p class="library-card__text">L’ophrys miroir est une orchidée sauvage étonnante dont la fleur ressemble à un petit miroir bleu brillant. Une curiosité de la nature que l’on peut admirer en Méditerranée.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="histoire,lieu">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/mairie.png" alt="Mairie et office de tourisme">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio de la Mairie et office de tourisme">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/Mairie-et-office-de-tourisme.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Histoire</span>
+              <span>Lieu</span>
+            </div>
+
+            <h2 class="library-card__title">Mairie et office de tourisme</h2>
+            <p class="library-card__text">Installés dans le Château des Castellane, un édifice du XVIIIe siècle reconstruit par le marquis Boniface-Hippolyte de Castellane, ils témoignent du patrimoine historique du village.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="animal,rongeur">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/ecureil.png" alt="Écureuil">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio de l’Écureuil">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/ecureuil.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Animal</span>
+              <span>Rongeur</span>
+            </div>
+
+            <h2 class="library-card__title">Écureuil</h2>
+            <p class="library-card__text">L’écureuil est un petit rongeur vif et agile qui bondit d’arbre en arbre. On le voit souvent chercher des noisettes et des graines dans les forêts et les parcs.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="animal,oiseau">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/fauvette.png" alt="Fauvette pitchou">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio de la Fauvette pitchou">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/fauvette-pitchou_pz6iHhSL.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Animal</span>
+              <span>Oiseau</span>
+            </div>
+
+            <h2 class="library-card__title">Fauvette pitchou</h2>
+            <p class="library-card__text">La fauvette pitchou est un petit oiseau vif qui se cache dans les buissons. Malgré sa taille discrète, son chant énergique résonne dans la garrigue.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="plante,arbre">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/arbre.png" alt="Chêne vert">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio du Chêne vert">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/Chêne-vert.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Plante</span>
+              <span>Arbre</span>
+            </div>
+
+            <h2 class="library-card__title">Chêne vert</h2>
+            <p class="library-card__text">Arbre typique de la garrigue méditerranéenne, le chêne vert est robuste et persistant, offrant ombre et refuge à de nombreuses espèces toute l’année.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="animal,reptile">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/tortue.png" alt="Tortue">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio de la Tortue">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/Tortue d’hermann.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Animal</span>
+              <span>Reptile</span>
+            </div>
+
+            <h2 class="library-card__title">Tortue</h2>
+            <p class="library-card__text">La tortue est un animal calme et robuste qui se déplace lentement parmi les feuilles. Elle se nourrit de plantes et reste souvent cachée dans la végétation de la garrigue.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="animal,mammifere">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/chauve.png" alt="Petit rhinolophe">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio du Petit rhinolophe">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/Petit-rhinolophe.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Animal</span>
+              <span>Mammifère</span>
+            </div>
+
+            <h2 class="library-card__title">Petit rhinolophe</h2>
+            <p class="library-card__text">La chauve-souris la plus typique de Sillans-la-Cascade est le petit rhinolophe, une espèce discrète qui vit dans les grottes et vieilles bâtisses. Nocturne, elle joue un rôle essentiel en chassant de nombreux insectes.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="histoire,lieu">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/eglise.png" alt="Eglise Saint Etienne">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio de l’Eglise Saint Etienne">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/eglise.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Histoire</span>
+              <span>Lieu</span>
+            </div>
+
+            <h2 class="library-card__title">Eglise Saint Etienne</h2>
+            <p class="library-card__text">Édifice ancien d’origine médiévale, l’église Saint-Étienne témoigne de l’histoire du village et de son architecture provençale simple.</p>
+          </div>
+        </article>
+
+        <article class="library-card" data-tags="animal,mammifere">
+          <div class="library-card__media">
+            <img class="library-card__image" src="images/renard.png" alt="Renard roux">
+
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio du Renard roux">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="audio/renard.wav" type="audio/wav">
+            </audio>
+          </div>
+
+          <div class="library-card__body">
+            <div class="library-card__tags" aria-label="Balises du contenu">
+              <span>Animal</span>
+              <span>Mammifère</span>
+            </div>
+
+            <h2 class="library-card__title">Renard roux</h2>
+            <p class="library-card__text">Le renard roux est un animal malin et discret qui vit dans les forêts et les campagnes. Il chasse surtout la nuit et s’adapte facilement à tous les milieux.</p>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Navigation principale">
+      <a class="bottom-nav__item" href="carte.html">
+        <img src="images/carte.png" alt="">
+        <span>Carte</span>
+      </a>
+      <a class="bottom-nav__item is-active" href="bibliotheque.html" aria-current="page">
+        <img src="images/livre.png" alt="">
+        <span>Librairie</span>
+      </a>
+      <a class="bottom-nav__item" href="infos.html">
+        <img src="images/idee.png" alt="">
+        <span>Infos</span>
+      </a>
+      <a class="bottom-nav__item" href="quiz.html">
+        <img src="images/quiz.png" alt="">
+        <span>Quiz</span>
+      </a>
+    </nav>
+  </main>
+  <script src="bibliotheque.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Claude Code — ne pas publier
+.claude/
+CLAUDE.md
+
+# Fichiers système Windows
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Logs
+*.log

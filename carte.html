@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#8b9616">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Sillans">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="images/SILLOU_favicon.svg">
+  <link rel="apple-touch-icon" href="images/SILLOU_favicon.svg">
+  <title>Sillans - Parcours</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="nav-page carte-page">
+  <main class="loading-screen nav-page-shell carte-shell" aria-label="Page parcours mobile">
+
+    <!-- CARTE -->
+    <section class="carte-map-section" aria-label="Carte du parcours de Sillans">
+      <div id="carteMap" class="carte-map" role="application" aria-label="Carte interactive du parcours de Sillans"></div>
+
+      <button type="button" class="carte-download-btn" id="downloadBanner" aria-label="Télécharger l'app pour l'utiliser hors-ligne">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="carte-download-btn__icon">
+          <path d="M12 3v10m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="carte-download-btn__text" aria-hidden="true">Télécharger l'app pour l'utiliser hors-ligne</span>
+      </button>
+
+    </section>
+
+    <!-- NAVIGATION (déjà codée) -->
+    <nav class="bottom-nav" aria-label="Navigation principale">
+      <a class="bottom-nav__item is-active" href="carte.html" aria-current="page">
+        <img src="images/carte.png" alt="">
+        <span>Carte</span>
+      </a>
+      <a class="bottom-nav__item" href="bibliotheque.html">
+        <img src="images/livre.png" alt="">
+        <span>Librairie</span>
+      </a>
+      <a class="bottom-nav__item" href="infos.html">
+        <img src="images/idee.png" alt="">
+        <span>Infos</span>
+      </a>
+      <a class="bottom-nav__item" href="quiz.html">
+        <img src="images/quiz.png" alt="">
+        <span>Quiz</span>
+      </a>
+    </nav>
+
+    <!-- CONTENU -->
+    <section class="carte-body">
+
+      <!-- Quête actuelle -->
+      <article class="quest-card" aria-label="Quête actuelle">
+        <img class="quest-card__boussole" src="images/boussole.png" aria-hidden="true" alt="">
+        <span class="quest-card__icon" aria-hidden="true">
+          <img src="images/drapeau.png" alt="">
+        </span>
+        <div class="quest-card__main">
+          <h2 class="quest-card__title">Quête Actuelle</h2>
+          <p class="quest-card__text" id="questText">Rend toi au point n°1 pour commencer l'aventure !</p>
+          <div class="quest-progress">
+            <div class="quest-progress__track"><span class="quest-progress__bar" id="questBar"></span></div>
+            <div class="quest-progress__labels">
+              <span>PROGRESSION</span>
+              <span id="questPercent">0%</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Badges -->
+      <article class="badges-card" aria-label="Badges du parcours">
+        <img class="badges-card__deco" src="images/mdi_badge.png" aria-hidden="true" alt="">
+        <div class="badges-card__head">
+          <div>
+            <h2 class="badges-card__title">Badges</h2>
+            <p class="badges-card__subtitle">Finis les mini-jeux pour assembler ton blason !</p>
+          </div>
+        </div>
+
+        <!-- Blason maître — s'assemble progressivement -->
+        <div class="master-badge" aria-label="Ton blason en cours d'assemblage">
+          <img class="master-badge__img" id="masterBadgeImg"
+               src="images/Badge/blason vide.png"
+               alt="Blason de Sillans en cours de complétion">
+          <p class="master-badge__caption" id="masterBadgeCaption">
+            Commence le parcours pour assembler ton blason !
+          </p>
+        </div>
+
+        <button type="button" class="master-badge__diplome-btn" id="diplomeBtn" hidden>
+          🎓 Télécharger mon diplôme
+        </button>
+
+        <div class="badges-grid" id="badgesGrid"></div>
+      </article>
+
+      <!-- Raccourcis -->
+      <div class="shortcut-cards">
+        <a class="shortcut-card shortcut-card--green" href="bibliotheque.html">
+          <img class="shortcut-card__icon" src="images/livre.png" alt="">
+          <span class="shortcut-card__title">Découvre la biodiversité de Sillans</span>
+          <span class="shortcut-card__sub">Explore la nature</span>
+          <img class="shortcut-card__deco" src="images/insect.png" aria-hidden="true" alt="">
+        </a>
+        <a class="shortcut-card shortcut-card--orange" href="quiz.html">
+          <img class="shortcut-card__icon shortcut-card__icon--quiz" src="images/quiz.png" alt="">
+          <span class="shortcut-card__title">Quiz de Sillou</span>
+          <span class="shortcut-card__sub">À faire après le parcours</span>
+          <img class="shortcut-card__deco" src="images/puzzle.png" aria-hidden="true" alt="">
+        </a>
+      </div>
+
+      <!-- Conseils de Sillou -->
+      <section class="sillou-tips" aria-label="Conseils de Sillou">
+        <img class="sillou-tips__mascot" src="images/sillou-feu.png" alt="Sillou">
+        <div class="sillou-bubble" role="note">
+          <span class="sillou-bubble__badge" aria-hidden="true">
+            <img src="images/déchets.png" alt="">
+          </span>
+          <p class="sillou-bubble__text">Pour protéger la nature de Sillans, n'oublie pas de ramasser tes déchets !</p>
+        </div>
+      </section>
+
+      <!-- Bouton de reset (tests uniquement) -->
+      <div style="text-align:center; padding: 8px 0 24px;">
+        <button type="button" id="devResetBtn" style="background:none; border:1px dashed rgba(47,42,24,.25); border-radius:10px; padding:7px 16px; font:400 11px 'Lexend',sans-serif; color:rgba(47,42,24,.4); cursor:pointer;">
+          🔄 Recommencer l'aventure (test)
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Pop-up téléchargement -->
+  <div class="modal-overlay" id="downloadModal" hidden>
+    <div class="download-pop" role="dialog" aria-modal="true" aria-labelledby="downloadPopTitle">
+      <img class="download-pop__mascot" src="images/gee.png" alt="">
+      <p class="download-pop__alert" id="downloadPopTitle">
+        Pas de réseau sur le site de la cascade ! Télécharge l'application <strong>avant de partir</strong> pour l'utiliser sans connexion.
+      </p>
+      <!-- Bouton install natif (Android/Chrome) -->
+      <button type="button" class="download-pop__btn" id="downloadConfirm">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Télécharger l'app
+      </button>
+      <!-- Instructions iOS (Safari → Partager) -->
+      <p class="download-pop__ios" id="downloadIosHint" hidden>
+        Sur iPhone : appuie sur <strong>Partager</strong>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M8 9l4-4 4 4M12 5v10M5 19h14"/></svg>
+        puis <strong>« Sur l'écran d'accueil »</strong>.
+      </p>
+      <button type="button" class="download-pop__later" id="downloadLater">Plus tard</button>
+    </div>
+  </div>
+
+  <!-- Modale mini-jeu / point (générique) -->
+  <div class="modal-overlay" id="gameModal" hidden>
+    <div class="game-modal" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
+      <button type="button" class="game-modal__close" id="gameClose" aria-label="Fermer">×</button>
+      <span class="game-modal__step" id="gameStep">Point n°1</span>
+      <div class="game-modal__badge"><img id="gameBadgeImg" src="" alt=""></div>
+      <h2 class="game-modal__title" id="gameModalTitle">Église Saint-Étienne</h2>
+      <p class="game-modal__text" id="gameModalText"></p>
+      <button type="button" class="game-modal__btn" id="gameComplete">Valider le point</button>
+      <button type="button" class="game-modal__skip" id="gameSkip">Passer →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 1 — Carte de bienvenue (avant le panneau info)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point1Welcome" hidden>
+    <div class="pt1-welcome" role="dialog" aria-modal="true" aria-labelledby="pt1WelcomeTitle">
+
+      <!-- Photo du lieu -->
+      <div class="pt1-welcome__photo">
+        <img src="images/eglise.JPG" alt="Église Saint-Étienne de Sillans-la-Cascade">
+        <button type="button" class="pt1-welcome__back" id="pt1WelcomeClose" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+        </button>
+        <span class="pt1-welcome__badge">Étape 1 · Départ</span>
+      </div>
+
+      <!-- Sillou + bulle -->
+      <div class="pt1-welcome__body">
+        <img class="pt1-welcome__mascot" src="images/sillou1.png" alt="Sillou">
+        <div class="pt1-welcome__bubble" id="pt1WelcomeTitle">
+          <p>Coucou l'aventurier&nbsp;! C'est moi, <strong>Sillou</strong>&nbsp;!</p>
+          <p>Avant de commencer, tu dois rejoindre ton <strong>point de départ&nbsp;: l'Église Saint-Étienne</strong>&nbsp;!</p>
+          <p>Pour trouver le chemin, cherche les <strong>pancartes</strong> dispersées sur la route, elles t'indiqueront la bonne direction.</p>
+          <p>Quand tu es bien devant l'église, appuie sur le bouton ci-dessous. Je t'y attends&nbsp;!</p>
+        </div>
+      </div>
+
+      <!-- Bouton -->
+      <div class="pt1-welcome__footer">
+        <button type="button" class="pt1-welcome__btn" id="pt1WelcomeBtn">
+          Je suis devant l'église !
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 1 — Panneau info (Église Saint-Étienne)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point1Modal" hidden>
+    <div class="pt1-panel" role="dialog" aria-modal="true" aria-labelledby="pt1PanelTitle">
+
+      <div class="pt1-panel__header">
+        <button type="button" class="pt1-panel__back" id="pt1Close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-panel__step" id="pt1PanelTitle">Étape 1 · L'Église</span>
+      </div>
+
+      <div class="pt1-panel__body">
+        <div class="pt1-panel__img-wrap">
+          <img class="pt1-panel__img" src="images/eglise.png" alt="Église Saint-Étienne de Sillans-la-Cascade">
+        </div>
+
+        <div class="library-card__audio pt1-audio-bar" role="group" aria-label="Écouter le texte">
+          <button class="library-card__play" type="button" id="pt1PlayBtn" aria-label="Écouter le texte">
+            <span class="library-card__play-icon" aria-hidden="true">▶</span>
+          </button>
+          <div class="library-card__wave" id="pt1Wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="library-card__wave-bar" style="--wave-height:52%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:74%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:40%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:82%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:58%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:92%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:46%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:68%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:36%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:78%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:50%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:88%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:42%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:66%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:54%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:80%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:38%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:72%"></span>
+          </div>
+        </div>
+        <audio id="pt1Audio" src="audio/point1.mp3" preload="none"></audio>
+
+        <div class="pt1-panel__text">
+          <p>Il y a très longtemps, cette église était une petite chapelle.</p>
+          <p>Un chevalier revenu d'un grand voyage rapporta une précieuse relique de Saint Étienne, ce qui rendit ce lieu très important pour le village.</p>
+          <p>Au fil des années, la chapelle fut agrandie pour devenir la belle église que l'on peut admirer aujourd'hui.</p>
+        </div>
+      </div>
+
+      <div class="pt1-panel__footer">
+        <button type="button" class="pt1-panel__launch" id="pt1Launch">Lancer le mini-jeu !</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 1 — Mini-jeu : Trie le matériel
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mg1-fullpage" id="mg1Modal" hidden>
+    <div class="mg1" role="dialog" aria-modal="true" aria-label="Mini-jeu : trie le matériel">
+
+      <div class="mg1__header">
+        <button type="button" class="mg1__back" id="mg1Back" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="mg1__title">Trie le matériel !</span>
+        <span class="mg1__counter" id="mg1Counter" aria-live="polite">1/8</span>
+        <button type="button" class="mg1__skip" id="mg1Skip" aria-label="Passer le mini-jeu">Passer →</button>
+      </div>
+
+      <p class="mg1__hint">Glisse ou tape la bonne zone 👇</p>
+
+      <div class="mg1__card-area">
+        <div class="mg1__card" id="mg1Card" role="img" aria-label="">
+          <span class="mg1__icon" id="mg1Icon" aria-hidden="true"></span>
+          <span class="mg1__label" id="mg1Label"></span>
+        </div>
+      </div>
+
+      <div class="mg1__zones">
+        <button type="button" class="mg1__zone mg1__zone--laisser" id="mg1Laisser" aria-label="À laisser à la maison">
+          <span class="mg1__zone-icon" aria-hidden="true">🏠</span>
+          <span class="mg1__zone-label">À laisser<br>à la maison</span>
+        </button>
+        <button type="button" class="mg1__zone mg1__zone--emporter" id="mg1Emporter" aria-label="À emporter">
+          <span class="mg1__zone-icon" aria-hidden="true">🎒</span>
+          <span class="mg1__zone-label">À emporter</span>
+        </button>
+      </div>
+
+      <div class="mg1__feedback" id="mg1Feedback" hidden aria-live="polite">
+        <img class="mg1__sillou" src="images/sillou1.png" alt="Sillou">
+        <p class="mg1__bubble" id="mg1FeedbackText"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 2 — Carte de bienvenue (La prairie)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point2Modal" hidden>
+    <div class="pt1-welcome" role="dialog" aria-modal="true" aria-labelledby="pt2WelcomeTitle">
+
+      <!-- Photo du lieu -->
+      <div class="pt1-welcome__photo">
+        <img src="images/prairie.jpg" alt="La prairie de Sillans-la-Cascade">
+        <button type="button" class="pt1-welcome__back" id="pt2Close" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+        </button>
+        <span class="pt1-welcome__badge">Étape 2 · Prairie</span>
+      </div>
+
+      <!-- Sillou + bulle -->
+      <div class="pt1-welcome__body">
+        <img class="pt1-welcome__mascot" src="images/sillou1.png" alt="Sillou">
+        <div class="pt1-welcome__bubble" id="pt2WelcomeTitle">
+          <p>Te voilà dans <strong>la prairie</strong> !</p>
+          <p>Regarde bien autour de toi : des insectes qui sautent, des fleurs parfumées, des oiseaux qui chantent… la nature est partout !</p>
+        </div>
+      </div>
+
+      <!-- Bouton -->
+      <div class="pt1-welcome__footer">
+        <button type="button" class="pt1-welcome__btn" id="pt2Launch">
+          Je suis prêt !
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 2 — Panneau info (La prairie)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point2Panel" hidden>
+    <div class="pt1-panel" role="dialog" aria-modal="true" aria-labelledby="pt2PanelTitle">
+
+      <div class="pt1-panel__header">
+        <button type="button" class="pt1-panel__back" id="pt2PanelClose" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-panel__step" id="pt2PanelTitle">Étape 2 · La Prairie</span>
+      </div>
+
+      <div class="pt1-panel__body">
+        <div class="pt1-panel__img-wrap">
+          <img class="pt1-panel__img" src="images/abeille.jpg" alt="La prairie de Sillans-la-Cascade">
+        </div>
+
+        <div class="library-card__audio pt1-audio-bar" role="group" aria-label="Écouter le texte">
+          <button class="library-card__play" type="button" id="pt2PlayBtn" aria-label="Écouter le texte">
+            <span class="library-card__play-icon" aria-hidden="true">▶</span>
+          </button>
+          <div class="library-card__wave" id="pt2Wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="library-card__wave-bar" style="--wave-height:48%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:76%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:38%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:84%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:55%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:90%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:44%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:70%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:33%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:80%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:52%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:86%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:40%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:64%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:56%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:78%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:36%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:68%"></span>
+          </div>
+        </div>
+        <audio id="pt2Audio" src="audio/point2.mp3" preload="none"></audio>
+
+        <div class="pt1-panel__text">
+          <p class="pt1-panel__text-title">La prairie de Sillans-la-Cascade</p>
+          <p>Grâce à la Bresque (la rivière) et à la cascade, la prairie humide de Sillans reste fraîche même en été.</p>
+          <p>Cette fraîcheur permet à de nombreuses plantes et animaux d'y vivre. Au printemps, les fleurs attirent insectes, oiseaux et papillons.</p>
+          <p>À la tombée de la nuit, les chauves-souris prennent leur envol. Ouvre l'œil pour découvrir les espèces étonnantes qui peuplent ce lieu !</p>
+        </div>
+      </div>
+
+      <div class="pt1-panel__footer">
+        <button type="button" class="pt1-panel__launch" id="pt2PanelLaunch">Lancer le mini-jeu !</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 2 — Mini-jeu : Jeu de mémoire
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mg2-fullpage" id="mg2Modal" hidden>
+    <div class="mg2" role="dialog" aria-modal="true" aria-label="Mini-jeu : Jeu de mémoire">
+
+      <div class="mg2__header">
+        <button type="button" class="mg2__back" id="mg2Back" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="mg2__title">Trouve les paires !</span>
+        <span class="mg2__counter" id="mg2Counter" aria-live="polite">0 / 6</span>
+        <button type="button" class="mg2__skip" id="mg2Skip" aria-label="Passer le mini-jeu">Passer →</button>
+      </div>
+
+      <!-- Bulle anecdote Sillou (apparaît quand une paire est trouvée) -->
+      <div class="mg2__anecdote" id="mg2Anecdote" hidden aria-live="polite">
+        <img class="mg2__anecdote-sillou" src="images/sillou1.png" alt="Sillou">
+        <div class="mg2__anecdote-bubble">
+          <strong id="mg2AnecdoteName"></strong>
+          <p id="mg2AnecdoteText"></p>
+          <span class="mg2__anecdote-tap" aria-hidden="true">👆 Tape pour continuer</span>
+        </div>
+      </div>
+
+      <!-- Grille de cartes -->
+      <div class="mg2__scroll">
+        <div class="mg2__grid" id="mg2Grid" role="list" aria-label="Grille de mémoire"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 3 — Belvédère : carte de bienvenue
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point3Modal" hidden>
+    <div class="pt1-welcome" role="dialog" aria-modal="true" aria-labelledby="pt3WelcomeTitle">
+
+      <div class="pt1-welcome__photo">
+        <img src="images/belvédère.jpg" alt="Le belvédère de Sillans-la-Cascade">
+        <button type="button" class="pt1-welcome__close" id="pt3Close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-welcome__badge">Étape 3 · Belvédère</span>
+      </div>
+
+      <div class="pt1-welcome__body">
+        <img class="pt1-welcome__mascot" src="images/sillou1.png" alt="Sillou la mascotte">
+        <div class="pt1-welcome__bubble" id="pt3WelcomeTitle">
+          <p>Te voilà au <strong>belvédère</strong> !</p>
+          <p>D'ici tu peux voir toute la cascade et les grandes falaises beiges. Ces rochers s'appellent du <strong>tuf</strong>. Sillou t'a préparé un petit jeu pour mieux comprendre les matériaux de Sillans.</p>
+          <p>Alors allons-y !</p>
+        </div>
+      </div>
+
+      <div class="pt1-welcome__footer">
+        <button type="button" class="pt1-welcome__btn" id="pt3Launch">Je suis au belvédère !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 3 — Belvédère : panneau d'informations
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point3Panel" hidden>
+    <div class="pt1-panel" role="dialog" aria-modal="true" aria-labelledby="pt3PanelTitle">
+
+      <div class="pt1-panel__header">
+        <button type="button" class="pt1-panel__back" id="pt3PanelClose" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-panel__title" id="pt3PanelTitle">Étape 3 — Le belvédère</span>
+      </div>
+
+      <div class="pt1-panel__body">
+
+        <div class="pt1-panel__img-wrap">
+          <img class="pt1-panel__img" src="images/tuf2.jpg" alt="Vue depuis le belvédère de Sillans-la-Cascade">
+        </div>
+
+        <!-- Lecteur audio -->
+        <div class="library-card__audio pt1-audio-bar" role="group" aria-label="Écouter le texte">
+          <button class="library-card__play" type="button" id="pt3PlayBtn" aria-label="Écouter le texte">
+            <span class="library-card__play-icon" aria-hidden="true">▶</span>
+          </button>
+          <div class="library-card__wave" id="pt3Wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="library-card__wave-bar" style="--wave-height:52%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:80%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:42%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:88%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:58%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:94%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:46%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:72%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:36%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:84%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:54%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:90%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:40%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:66%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:60%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:76%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:38%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:70%"></span>
+          </div>
+        </div>
+        <audio id="pt3Audio" src="audio/point3.mp3" preload="none"></audio>
+
+        <div class="pt1-panel__text">
+          <h2 class="pt1-panel__text-title">Le belvédère de Sillans-la-Cascade</h2>
+          <p>Bienvenue au belvédère ! D'ici, tu peux admirer la cascade de Sillans et les grandes falaises qui l'entourent.</p>
+          <p>Ces parois sont formées de <strong>tuf</strong>, une roche calcaire créée très lentement par l'eau qui dépose couche après couche de minuscules grains de calcaire.</p>
+          <p>Très rares en France, les cascades de tuf ont besoin d'une eau pure et riche en minéraux. Observe les lignes dans la roche : elles racontent l'histoire du paysage !</p>
+        </div>
+
+      </div><!-- /.pt1-panel__body -->
+
+      <div class="pt1-panel__footer">
+        <button type="button" class="pt1-panel__launch" id="pt3PanelLaunch">Lancer le mini-jeu !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 3 — Mini-jeu : Géologue en herbe (tri de matériaux)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mg3-fullpage" id="mg3Modal" hidden>
+    <div class="mg3" role="dialog" aria-modal="true" aria-label="Mini-jeu : Géologue en herbe">
+
+      <div class="mg3__header">
+        <button type="button" class="mg3__back" id="mg3Back" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="mg3__title">Géologue en herbe !</span>
+        <button type="button" class="mg3__skip" id="mg3Skip" aria-label="Passer le mini-jeu">Passer →</button>
+      </div>
+
+      <!-- ——— Zone de jeu principale ——— -->
+      <div class="mg3__game" id="mg3Game">
+
+        <!-- Boutons de tri -->
+        <div class="mg3__zones">
+          <button type="button" class="mg3__zone mg3__zone--nature" id="mg3ZoneNature" aria-label="Naturel du site">
+            <span class="mg3__zone-arrow" aria-hidden="true">←</span>
+            <span class="mg3__zone-label">🌿 Naturel<br>du site</span>
+            <span class="mg3__zone-items" id="mg3ZoneNatureItems" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="mg3__zone mg3__zone--homme" id="mg3ZoneHomme" aria-label="Apporté par l'homme">
+            <span class="mg3__zone-label">🏗️ Apporté par<br>l'homme</span>
+            <span class="mg3__zone-arrow" aria-hidden="true">→</span>
+            <span class="mg3__zone-items" id="mg3ZoneHommeItems" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- Carte à trier (une seule à la fois) -->
+        <div class="mg3__card-area">
+          <div class="mg3__card" id="mg3Card" role="img" aria-label="Carte à trier">
+            <img class="mg3__card-img" id="mg3CardImg" alt="" aria-hidden="true">
+            <span class="mg3__card-name" id="mg3CardName"></span>
+          </div>
+        </div>
+
+        <!-- Compteur -->
+        <p class="mg3__counter" id="mg3Counter" aria-live="polite"></p>
+
+        <!-- Bulle de retour Sillou -->
+        <div class="mg3__feedback" id="mg3Feedback" hidden aria-live="polite">
+          <img src="images/sillou1.png" alt="Sillou" class="mg3__feedback-sillou">
+          <div class="mg3__feedback-bubble" id="mg3FeedbackBubble"></div>
+        </div>
+
+      </div><!-- /.mg3__game -->
+
+      <!-- ——— Écran de succès ——— -->
+      <div class="mg3__success" id="mg3Success" hidden>
+        <span class="mg3__success-emoji" aria-hidden="true">🏆</span>
+        <p class="mg3__success-title">Bravo, Géologue !</p>
+        <img src="images/sillou1.png" alt="Sillou fête avec toi !" class="mg3__success-sillou">
+        <p class="mg3__success-text">Tu as trié toutes les roches et matériaux comme un vrai expert du belvédère !</p>
+        <button type="button" class="mg3__success-btn" id="mg3ValidateBtn">Continuer l'aventure ! 🏅</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 4 — Passerelle : carte de bienvenue
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point4Modal" hidden>
+    <div class="pt1-welcome" role="dialog" aria-modal="true" aria-labelledby="pt4WelcomeTitle">
+
+      <div class="pt1-welcome__photo">
+        <img src="images/passerelle.png" alt="La passerelle de Sillans-la-Cascade">
+        <button type="button" class="pt1-welcome__close" id="pt4Close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-welcome__badge">Étape 4 · Passerelle</span>
+      </div>
+
+      <div class="pt1-welcome__body">
+        <img class="pt1-welcome__mascot" src="images/sillou1.png" alt="Sillou la mascotte">
+        <div class="pt1-welcome__bubble" id="pt4WelcomeTitle">
+          <p>Te voilà sur la <strong>passerelle en bois</strong> !</p>
+          <p>Regarde bien autour de toi. Tout ce que tu vois les planches, les poteaux, les cailloux ont été <strong>pensé exprès</strong> pour protéger la nature.</p>
+          <p>Sillou t'a préparé un <strong>quiz d'explorateur</strong> pour découvrir pourquoi !</p>
+        </div>
+      </div>
+
+      <div class="pt1-welcome__footer">
+        <button type="button" class="pt1-welcome__btn" id="pt4Launch">Je suis sur la passerelle !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 4 — Passerelle : panneau d'informations
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point4Panel" hidden>
+    <div class="pt1-panel" role="dialog" aria-modal="true" aria-labelledby="pt4PanelTitle">
+
+      <div class="pt1-panel__header">
+        <button type="button" class="pt1-panel__back" id="pt4PanelClose" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-panel__title" id="pt4PanelTitle">Étape 4 — La passerelle</span>
+      </div>
+
+      <div class="pt1-panel__body">
+
+        <img class="pt1-panel__photo" src="images/passerelle.png" alt="La passerelle de Sillans-la-Cascade">
+
+        <div class="library-card__audio pt1-audio-bar" role="group" aria-label="Écouter le texte">
+          <button class="library-card__play" type="button" id="pt4PlayBtn" aria-label="Écouter le texte">
+            <span class="library-card__play-icon" aria-hidden="true">▶</span>
+          </button>
+          <div class="library-card__wave" id="pt4Wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="library-card__wave-bar" style="--wave-height:56%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:82%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:40%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:90%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:62%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:96%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:44%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:74%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:38%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:86%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:50%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:92%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:42%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:68%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:58%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:78%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:36%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:72%"></span>
+          </div>
+        </div>
+        <audio id="pt4Audio" src="audio/point4.mp3" preload="none"></audio>
+
+        <div class="pt1-panel__text">
+          <h2 class="pt1-panel__text-title">La passerelle de Sillans-la-Cascade</h2>
+          <p>Pour admirer la cascade tout en protégeant la nature, une <strong>passerelle en bois</strong> a été installée au-dessus des zones les plus fragiles.</p>
+          <p>Autrefois, le passage répété des visiteurs abîmait le sol et empêchait certaines plantes de repousser correctement.</p>
+          <p>Aujourd'hui, la passerelle protège la <strong>faune et la flore</strong> tout en permettant à chacun de profiter du paysage en toute sécurité.</p>
+        </div>
+
+      </div>
+
+      <div class="pt1-panel__footer">
+        <button type="button" class="pt1-panel__launch" id="pt4PanelLaunch">Lancer le mini-jeu !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 4 — Mini-jeu : Quiz « Pourquoi cette passerelle ? »
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mg4-fullpage" id="mg4Modal" hidden>
+    <div class="mg4" role="dialog" aria-modal="true" aria-label="Mini-jeu : Pourquoi cette passerelle ?">
+
+      <div class="mg4__header">
+        <button type="button" class="mg4__back" id="mg4Back" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="mg4__title">Pourquoi cette passerelle ?</span>
+        <button type="button" class="mg4__skip" id="mg4Skip" aria-label="Passer le mini-jeu">Passer →</button>
+      </div>
+
+      <!-- Barre de progression -->
+      <div class="mg4__prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="mg4ProgBar">
+        <div class="mg4__prog-fill" id="mg4ProgFill"></div>
+      </div>
+
+      <!-- ——— Section quiz ——— -->
+      <div class="mg4__quiz-section" id="mg4QuizSection">
+
+        <div class="mg4__intro">
+          <img class="mg4__intro-sillou" src="images/sillou1.png" alt="Sillou">
+          <p class="mg4__intro-text" id="mg4ProgLabel">Question 1 / 4</p>
+        </div>
+
+        <!-- Texte de la question -->
+        <div class="mg4__question" id="mg4Question"></div>
+
+        <!-- 3 boutons de réponse -->
+        <div class="mg4__choices" id="mg4Choices" role="group" aria-label="Choix de réponse"></div>
+
+        <!-- Feedback Sillou (masqué avant réponse) -->
+        <div class="mg4__feedback" id="mg4Feedback" hidden>
+          <img src="images/sillou1.png" alt="Sillou" class="mg4__feedback-sillou">
+          <div class="mg4__feedback-bubble" id="mg4FeedbackBubble"></div>
+        </div>
+
+        <button type="button" class="mg4__next-btn" id="mg4Next" hidden>Continuer →</button>
+
+      </div><!-- /.mg4__quiz-section -->
+
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 5 — Cascade : carte de bienvenue
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point5Modal" hidden>
+    <div class="pt1-welcome" role="dialog" aria-modal="true" aria-labelledby="pt5WelcomeTitle">
+
+      <div class="pt1-welcome__photo">
+        <img src="images/cascade.jpg" alt="La cascade de Sillans-la-Cascade">
+        <button type="button" class="pt1-welcome__close" id="pt5Close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-welcome__badge">Étape 5 · Cascade</span>
+      </div>
+
+      <div class="pt1-welcome__body">
+        <img class="pt1-welcome__mascot" src="images/sillou1.png" alt="Sillou la mascotte">
+        <div class="pt1-welcome__bubble" id="pt5WelcomeTitle">
+          <p>Te voilà devant le <strong>trésor de Sillans</strong> : la cascade !</p>
+          <p>Après l'église, la prairie, le belvédère et la passerelle… tu arrives enfin devant cette <strong>chute d'eau</strong> impressionnante !</p>
+          <p>Sillou a un <strong>défi spécial</strong> pour toi avant de partir vers le village !</p>
+        </div>
+      </div>
+
+      <div class="pt1-welcome__footer">
+        <button type="button" class="pt1-welcome__btn" id="pt5Launch">Je suis devant la cascade !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 5 — Cascade : panneau d'informations
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point5Panel" hidden>
+    <div class="pt1-panel" role="dialog" aria-modal="true" aria-labelledby="pt5PanelTitle">
+
+      <div class="pt1-panel__header">
+        <button type="button" class="pt1-panel__back" id="pt5PanelClose" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-panel__title" id="pt5PanelTitle">Étape 5 — La cascade</span>
+      </div>
+
+      <div class="pt1-panel__body">
+
+        <img class="pt1-panel__photo" src="images/casca.jpg" alt="La cascade de Sillans-la-Cascade">
+
+        <div class="library-card__audio pt1-audio-bar" role="group" aria-label="Écouter le texte">
+          <button class="library-card__play" type="button" id="pt5PlayBtn" aria-label="Écouter le texte">
+            <span class="library-card__play-icon" aria-hidden="true">▶</span>
+          </button>
+          <div class="library-card__wave" id="pt5Wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="library-card__wave-bar" style="--wave-height:60%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:88%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:44%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:94%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:66%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:98%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:48%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:76%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:38%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:90%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:54%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:96%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:42%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:70%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:62%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:82%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:36%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:74%"></span>
+          </div>
+        </div>
+        <audio id="pt5Audio" src="audio/point5.mp3" preload="none"></audio>
+
+        <div class="pt1-panel__text">
+          <h2 class="pt1-panel__text-title">La cascade de Sillans</h2>
+          <p>Te voilà devant la cascade de Sillans, un véritable <strong>trésor naturel</strong> du village, après avoir découvert ses différents points d'observation.</p>
+          <p>Haute de <strong>42 mètres</strong>, elle est alimentée par la Bresque et façonne depuis des millénaires les <strong>falaises de tuf</strong> qui l'entourent.</p>
+          <p>Son humidité crée un milieu idéal pour de nombreuses espèces. Pour préserver ce lieu, il est important de <strong>respecter et protéger</strong> la nature.</p>
+        </div>
+
+      </div>
+
+      <div class="pt1-panel__footer">
+        <button type="button" class="pt1-panel__launch" id="pt5PanelLaunch">Lancer le mini-jeu !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 5 — Mini-jeu : Écoute la rivière (jeu sonore)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mg5son-fullpage" id="mg5SonModal" hidden>
+    <div class="mg5son" role="dialog" aria-modal="true" aria-label="Mini-jeu : Écoute la rivière">
+
+      <div class="mg5son__header">
+        <button type="button" class="mg5son__back" id="mg5SonBack" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="mg5son__title">Écoute la rivière !</span>
+        <button type="button" class="mg5son__skip" id="mg5SonSkip" aria-label="Passer le mini-jeu">Passer →</button>
+      </div>
+
+      <!-- ——— Zone de jeu ——— -->
+      <div class="mg5son__game" id="mg5SonGame">
+
+        <!-- Instruction Sillou -->
+        <div class="mg5son__intro">
+          <img src="images/sillou1.png" alt="Sillou" class="mg5son__intro-sillou">
+          <p class="mg5son__intro-text">Écoute le son et touche <strong>l'image</strong> qui correspond !</p>
+        </div>
+
+        <!-- En-tête du round : compteur + bouton lecture -->
+        <div class="mg5son__round-header">
+          <p class="mg5son__counter" id="mg5SonCounter">Son 1 / 5</p>
+          <button type="button" class="mg5son__play-big" id="mg5SonPlayBig" aria-label="Écouter le son">
+            <span class="mg5son__play-big-icon" aria-hidden="true">▶</span>
+            <span class="mg5son__play-big-waves" aria-hidden="true">
+              <span class="mg5son__play-big-wave"></span>
+              <span class="mg5son__play-big-wave"></span>
+              <span class="mg5son__play-big-wave"></span>
+              <span class="mg5son__play-big-wave"></span>
+            </span>
+          </button>
+          <p class="mg5son__sound-hint" id="mg5SonHint">Appuie sur ▶ pour écouter</p>
+        </div>
+
+        <!-- Grille de 5 images à associer (générée par JS) -->
+        <div class="mg5son__img-grid" id="mg5SonImgGrid" role="group" aria-label="Images à identifier"></div>
+
+        <!-- Feedback Sillou après bonne réponse -->
+        <div class="mg5son__feedback" id="mg5SonFeedback" hidden>
+          <img src="images/sillou1.png" alt="Sillou" class="mg5son__feedback-sillou">
+          <div class="mg5son__feedback-bubble" id="mg5SonFeedbackBubble"></div>
+        </div>
+
+        <!-- Bouton continuer -->
+        <button type="button" class="mg5son__next-btn" id="mg5SonNext" hidden>Continuer →</button>
+
+      </div><!-- /.mg5son__game -->
+
+      <!-- ——— Écran de succès ——— -->
+      <div class="mg5son__success" id="mg5SonSuccess" hidden>
+        <span class="mg5son__success-emoji" aria-hidden="true">🌊</span>
+        <p class="mg5son__success-title">Bravo, explorateur !</p>
+        <img src="images/sillou1.png" alt="Sillou fête avec toi !" class="mg5son__success-sillou">
+        <div class="mg5son__success-facts">
+          <p>🌊 La cascade de Sillans tombe de <strong>42 mètres</strong> ! Son grondement s'entend depuis le village.</p>
+          <p>🐦 Le <strong>rollier d'Europe</strong> est un oiseau aux couleurs éclatantes qui niche dans les vieux arbres creux.</p>
+        </div>
+        <button type="button" class="mg5son__validate-btn" id="mg5SonValidate">Continuer l'aventure ! 🏅</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 6 — Mini-jeu : Mémoire du Gardien
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mg5-fullpage" id="mg5Modal" hidden>
+    <div class="mg5" role="dialog" aria-modal="true" aria-label="Mini-jeu : Le grand mémoire du Gardien">
+
+      <div class="mg5__header">
+        <button type="button" class="mg5__back" id="mg5Back" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="mg5__title" id="mg5HeaderTitle">Mémoire du Gardien</span>
+        <button type="button" class="mg5__skip" id="mg5Skip" aria-label="Passer le mini-jeu">Passer →</button>
+      </div>
+
+      <!-- ——— Section jeu d'association ——— -->
+      <div class="mg5__match-section" id="mg5MatchSection">
+
+        <div class="mg5__match-intro">
+          <img src="images/sillou1.png" alt="Sillou" class="mg5__match-sillou">
+          <p class="mg5__match-intro-text">Relie chaque <strong>étape du parcours</strong> à ce que tu y as appris ! Touche une étape puis la bonne règle — ou l'inverse !</p>
+        </div>
+
+        <p class="mg5__match-counter" id="mg5Counter">0 / 5 paires trouvées</p>
+
+        <!-- Étapes (rangée du haut) -->
+        <div class="mg5__locs" id="mg5Locs" role="group" aria-label="Étapes du parcours"></div>
+
+        <!-- Feedback Sillou après chaque bonne paire -->
+        <div class="mg5__match-feedback" id="mg5MatchFeedback" hidden>
+          <img src="images/sillou1.png" alt="" class="mg5__mf-sillou" aria-hidden="true">
+          <div class="mg5__mf-bubble" id="mg5MatchFeedbackText"></div>
+        </div>
+
+        <!-- Règles (liste du bas) -->
+        <div class="mg5__rules" id="mg5Rules" role="group" aria-label="Règles à associer"></div>
+
+        <!-- Bannière succès (masquée) -->
+        <div class="mg5__match-success" id="mg5MatchSuccess" hidden>
+          <span class="mg5__match-success-icon">🏅</span>
+          <p class="mg5__match-success-text">Bravo ! Tu as retrouvé toutes les missions du Gardien !</p>
+          <button type="button" class="mg5__match-success-btn" id="mg5ValidateBtn">Terminer l'aventure ! 🏅</button>
+        </div>
+
+      </div><!-- /.mg5__match-section -->
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 6 — Village : carte de bienvenue
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point6Modal" hidden>
+    <div class="pt1-welcome" role="dialog" aria-modal="true" aria-labelledby="pt6WelcomeTitle">
+
+      <div class="pt1-welcome__photo">
+        <img src="images/mairie.png" alt="Le village de Sillans-la-Cascade">
+        <button type="button" class="pt1-welcome__close" id="pt6Close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-welcome__badge">Étape 6 · Le village</span>
+      </div>
+
+      <div class="pt1-welcome__body">
+        <img class="pt1-welcome__mascot" src="images/sillou1.png" alt="Sillou la mascotte">
+        <div class="pt1-welcome__bubble" id="pt6WelcomeTitle">
+          <p>Bienvenue dans le <strong>cœur du village</strong> ! Tu es arrivé à la dernière étape du parcours.</p>
+          <p>Les ruelles, les fontaines, les maisons en pierre… Sillans garde encore <strong>quelques secrets</strong> à te révéler !</p>
+          <p>Prêt pour le <strong>défi final</strong> ? 🏆</p>
+        </div>
+      </div>
+
+      <div class="pt1-welcome__footer">
+        <button type="button" class="pt1-welcome__btn" id="pt6Launch">Je suis dans le village !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 6 — Village : panneau d'informations
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="point6Panel" hidden>
+    <div class="pt1-panel" role="dialog" aria-modal="true" aria-labelledby="pt6PanelTitle">
+
+      <div class="pt1-panel__header">
+        <button type="button" class="pt1-panel__back" id="pt6PanelClose" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="pt1-panel__title" id="pt6PanelTitle">Étape 6 — Le village</span>
+      </div>
+
+      <div class="pt1-panel__body">
+
+        <!-- Comparateur avant/après -->
+        <div class="pt1-panel__img-wrap img-compare" id="pt6Compare">
+          <!-- Après (v2) — fond -->
+          <img class="img-compare__img" src="images/v2.png" alt="Le village de Sillans aujourd'hui" draggable="false">
+          <!-- Avant (v1) — clippé à gauche par la barre -->
+          <div class="img-compare__before" id="pt6CompareBefore">
+            <img class="img-compare__img" src="images/v1.jpg" alt="Le village de Sillans autrefois" draggable="false">
+          </div>
+          <!-- Barre glissable -->
+          <div class="img-compare__handle" id="pt6CompareHandle"
+               role="slider" tabindex="0"
+               aria-label="Glisser pour comparer avant et après"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <div class="img-compare__handle-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+                <path d="M8 5L3 12l5 7V5zm8 0v14l5-7-5-7z"/>
+              </svg>
+            </div>
+          </div>
+          <!-- Labels -->
+          <span class="img-compare__label img-compare__label--before" aria-hidden="true">Avant</span>
+          <span class="img-compare__label img-compare__label--after"  aria-hidden="true">Après</span>
+        </div>
+
+        <div class="library-card__audio pt1-audio-bar" role="group" aria-label="Écouter le texte">
+          <button class="library-card__play" type="button" id="pt6PlayBtn" aria-label="Écouter le texte">
+            <span class="library-card__play-icon" aria-hidden="true">▶</span>
+          </button>
+          <div class="library-card__wave" id="pt6Wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="library-card__wave-bar" style="--wave-height:55%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:80%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:40%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:90%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:62%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:96%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:46%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:78%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:35%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:88%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:58%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:94%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:44%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:72%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:60%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:84%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:38%"></span>
+            <span class="library-card__wave-bar" style="--wave-height:70%"></span>
+          </div>
+        </div>
+        <audio id="pt6Audio" src="audio/point6.mp3" preload="none"></audio>
+
+        <div class="pt1-panel__text">
+          <h2 class="pt1-panel__text-title">Le village de Sillans</h2>
+          <p>En te promenant dans les ruelles de Sillans, tu découvres un village marqué par des <strong>siècles d'histoire</strong>.</p>
+          <p>Les maisons en pierre, les fontaines et les petites places racontent son évolution au fil du temps.</p>
+          <p>Depuis les <strong>premiers habitants</strong> jusqu'au village actuel, chaque pierre garde la mémoire de cette longue histoire.</p>
+        </div>
+
+      </div>
+
+      <div class="pt1-panel__footer">
+        <button type="button" class="pt1-panel__launch" id="pt6PanelLaunch">Lancer le mini-jeu !</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       POINT 6 — Mini-jeu : La frise du temps
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mg6-fullpage" id="mg6Modal" hidden>
+    <div class="mg6" role="dialog" aria-modal="true" aria-label="Mini-jeu : La frise du temps">
+
+      <div class="mg6__header">
+        <button type="button" class="mg6__back" id="mg6Back" aria-label="Retour">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="mg6__title">La frise du temps</span>
+        <button type="button" class="mg6__skip" id="mg6Skip" aria-label="Passer le mini-jeu">Passer →</button>
+      </div>
+
+      <!-- ——— Zone de jeu ——— -->
+      <div class="mg6__content" id="mg6Content">
+
+        <div class="mg6__intro">
+          <img src="images/sillou1.png" alt="Sillou" class="mg6__intro-sillou">
+          <p class="mg6__intro-text">Touche une carte d'époque, puis son emplacement sur la frise — <strong>du plus ancien au plus récent</strong> ! Tu peux aussi toucher l'emplacement en premier.</p>
+        </div>
+
+        <p class="mg6__counter" id="mg6Counter">0 / 4 bien placées</p>
+
+        <!-- Bulle Sillou (anecdote après chaque bonne réponse) -->
+        <div class="mg6__feedback" id="mg6Feedback" hidden>
+          <img src="images/sillou1.png" alt="" class="mg6__feedback-sillou" aria-hidden="true">
+          <div class="mg6__feedback-bubble" id="mg6FeedbackText"></div>
+        </div>
+
+        <!-- Frise cible (slots numérotés) -->
+        <div class="mg6__timeline-wrap">
+          <div class="mg6__timeline-arrow" aria-hidden="true">
+            <span class="mg6__arrow-label">Ancien</span>
+            <div class="mg6__timeline-line"></div>
+            <span class="mg6__arrow-label">Récent</span>
+          </div>
+          <div class="mg6__slots" id="mg6Slots" role="group" aria-label="Emplacements chronologiques"></div>
+        </div>
+
+        <!-- Cartes mélangées (tray source) -->
+        <p class="mg6__tray-label">👆 Tape une époque ci-dessous, puis son bon emplacement ↑</p>
+        <div class="mg6__tray" id="mg6Tray" role="group" aria-label="Époques à replacer"></div>
+
+      </div><!-- /.mg6__content -->
+
+      <!-- ——— Écran de succès final ——— -->
+      <div class="mg6__success" id="mg6Success" hidden>
+        <span class="mg6__success-emoji">🎉</span>
+        <p class="mg6__success-title">Bravo, Gardien !</p>
+        <p class="mg6__success-text">Tu connais maintenant toute l'histoire de Sillans-la-Cascade, de l'Âge du Bronze jusqu'à aujourd'hui !</p>
+        <img src="images/sillou1.png" alt="Sillou célèbre" class="mg6__success-sillou">
+        <p class="mg6__success-quote">"Tu es devenu un vrai Gardien de l'histoire de Sillans ! Je suis fier de toi." 🏅</p>
+        <button type="button" class="mg6__success-btn" id="mg6ValidateBtn">Terminer l'aventure ! 🏅</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MODALE SUCCÈS BADGE — partagée par tous les points
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="badgeSuccessModal" hidden>
+    <div class="badge-success" role="dialog" aria-modal="true" aria-labelledby="badgeSuccessName">
+      <div class="badge-success__wrap">
+        <img class="badge-success__blason" id="badgeSuccessBlason" src="" alt="">
+        <div class="badge-success__stars" aria-hidden="true">
+          <span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+      </div>
+      <p class="badge-success__name" id="badgeSuccessName"></p>
+      <p class="badge-success__hint" id="badgeSuccessHint"></p>
+      <button type="button" class="badge-success__btn" id="badgeSuccessBtn">Continuer l'aventure !</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ÉCRAN DE FIN — Bravo, tu as fini le parcours !
+       ═══════════════════════════════════════════════════════════ -->
+  <div id="finishScreen" class="finish-screen" hidden aria-label="Félicitations, tu as terminé le parcours !">
+    <div class="finish-screen__rays" aria-hidden="true"></div>
+    <h1 class="finish-screen__title">Bravo !</h1>
+    <p class="finish-screen__sub">Tu as fini le parcours.</p>
+    <img class="finish-screen__mascot" src="images/gee.png" alt="Gee fête ta victoire !">
+    <p class="finish-screen__msg">Tu fais officiellement parti des gardiens<br>de Sillans-la-cascade !</p>
+    <p class="finish-screen__prompt">Écris ton prénom,<br>nous avons une surprise pour toi :</p>
+    <input type="text" class="finish-screen__input" id="finishNameInput"
+           placeholder="Ton prénom…" autocomplete="given-name" aria-label="Ton prénom">
+    <button type="button" class="finish-screen__btn" id="finishValidate">Valider</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MODALE DIPLÔME — Voici ton diplôme !
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="diplomeModal" hidden>
+    <div class="diplome-pop" role="dialog" aria-modal="true" aria-labelledby="diplomeTitle">
+      <button type="button" class="diplome-pop__close" id="diplomeClose" aria-label="Fermer">×</button>
+      <h2 class="diplome-pop__title" id="diplomeTitle">Voici ton diplôme !</h2>
+      <p class="diplome-pop__sub">Tu peux maintenant le télécharger et l'imprimer</p>
+      <button type="button" class="diplome-pop__dl" id="diplomeDownload">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Télécharger ton diplôme
+      </button>
+      <p class="diplome-pop__note">Tu peux aussi le présenter devant tes camarades en classe !</p>
+      <p class="diplome-pop__hint">N'oublie pas de venir avec ton diplôme à l'office de tourisme, tu pourras récupérer un petit cadeau !</p>
+      <button type="button" class="diplome-pop__back" id="diplomeBack">Retour accueil</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       APERÇU LIEU — plein écran
+       Utilisé avant chaque mini-jeu + intro vidéo 1ère visite
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="location-fullscreen" id="locationModal" hidden aria-label="Aperçu du lieu">
+    <div class="location-fullscreen__media" id="locationMedia" aria-hidden="true"></div>
+    <button type="button" class="location-fullscreen__skip" id="locationSkip" aria-label="Passer">Passer ✕</button>
+    <div class="location-fullscreen__overlay">
+      <span class="location-fullscreen__step" id="locationStep"></span>
+      <h2 class="location-fullscreen__title" id="locationTitle"></h2>
+      <p class="location-fullscreen__hint" id="locationHint"></p>
+      <button type="button" class="location-fullscreen__btn" id="locationContinue">J'y suis ! 🎯</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="carte.js"></script>
+</body>
+</html>

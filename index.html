@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="theme-color" content="#8b9616">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="Sillans">
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" type="image/svg+xml" href="images/SILLOU_favicon.svg">
+	<link rel="apple-touch-icon" href="images/SILLOU_favicon.svg">
+	<title>Sillans - Chargement</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<main class="loading-screen" aria-label="Ecran de chargement mobile">
+		<section class="hero" aria-label="Mascotte de chargement">
+			<img class="mascot" src="images/gee.png" alt="Mascotte Gee">
+			<div class="loader-stage">
+				<div class="loader" aria-label="Progression du téléchargement">
+					<div class="loader__ring" id="loaderRing">
+						<div class="loader__hole"></div>
+						<div class="loader__content">
+							<div class="loader__percent" id="loaderPercent">0%</div>
+							<div class="loader__label" id="loaderLabel">Chargement</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="cta-button" id="ctaButton" href="carte.html" aria-label="Plonger dans l'aventure">
+				<span class="cta-button__text">Plonger dans l'aventure !</span>
+				<span class="cta-button__arrow" aria-hidden="true">→</span>
+			</a>
+			<p class="cta-sound-hint" aria-label="Conseil : active le son pour une meilleure expérience">
+				<span class="cta-sound-hint__icon" aria-hidden="true">
+					<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+						<path d="M4 8.5h2.8l4.7-3.8v12.6l-4.7-3.8H4V8.5z" fill="currentColor"/>
+						<path class="snd-wave snd-wave--near" d="M14 9.5a2.2 2.2 0 0 1 0 3.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+						<path class="snd-wave snd-wave--far"  d="M16.5 7a5.6 5.6 0 0 1 0 8.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+					</svg>
+				</span>
+				Active le son pour une meilleure expérience !
+			</p>
+		</section>
+
+		<aside class="fact-card" aria-label="Le saviez-vous ?">
+			<div class="fact-card__title">
+				<img src="images/icon-ampoule.png" alt="ampoule" class="fact-card__icon" />
+				<span>Le saviez-vous ?</span>
+			</div>
+			<p>
+				Lorem ipsum dolor sit amet consectetur. Dui convallis nibh posuere
+				senectus egestas molestie sed. Euismod nisl tellus molestie sit justo
+				amet cursus convallis.
+			</p>
+		</aside>
+	</main>
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#8b9616">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="images/SILLOU_favicon.svg">
+  <link rel="apple-touch-icon" href="images/SILLOU_favicon.svg">
+  <title>Sillans - Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="nav-page">
+  <main class="loading-screen nav-page-shell quiz-shell" aria-label="Page quiz mobile">
+
+    <!-- ── En-tête ── -->
+    <header class="quiz-hero" aria-label="En-tête quiz">
+      <div class="quiz-hero__content">
+        <h1 class="quiz-hero__title">Le Quiz de Sillou</h1>
+        <p class="quiz-hero__sub">Avec Sillou, teste tes <strong>connaissances</strong> suite à ta visite et prouve que tu as l'âme d'un aventurier <strong class="quiz-hero__sub--green">éco-responsable</strong>&nbsp;!</p>
+      </div>
+      <div class="quiz-hero__mascot-wrap">
+        <img class="quiz-hero__mascot" src="images/what.png" alt="Sillou avec un point d'interrogation">
+      </div>
+    </header>
+
+    <section class="quiz-top" aria-label="Quiz en vedette">
+      <div class="quiz-top__grid">
+        <article class="quiz-card is-selected">
+          <div class="quiz-card__rating difficulty-1" aria-label="Difficulté 1 sur 3">
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="quiz-card__score">0/5</span>
+          </div>
+          <h2 class="quiz-card__title">Quiz 1</h2>
+          <p class="quiz-card__text">Les animaux de Sillans</p>
+        </article>
+
+        <article class="quiz-card">
+          <div class="quiz-card__rating difficulty-1" aria-label="Difficulté 1 sur 3">
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="quiz-card__score">0/5</span>
+          </div>
+          <h2 class="quiz-card__title">Quiz 2</h2>
+          <p class="quiz-card__text">Les animaux du village</p>
+        </article>
+
+        <article class="quiz-card">
+          <div class="quiz-card__rating difficulty-2" aria-label="Difficulté 2 sur 3">
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="quiz-card__score">0/5</span>
+          </div>
+          <h2 class="quiz-card__title">Quiz 3</h2>
+          <p class="quiz-card__text">Les plantes et fleurs</p>
+        </article>
+
+        <article class="quiz-card">
+          <div class="quiz-card__rating difficulty-2" aria-label="Difficulté 2 sur 3">
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="quiz-card__score">0/5</span>
+          </div>
+          <h2 class="quiz-card__title">Quiz 4</h2>
+          <p class="quiz-card__text">Sécurité à Sillans</p>
+        </article>
+
+        <article class="quiz-card">
+          <div class="quiz-card__rating difficulty-3" aria-label="Difficulté 3 sur 3">
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="quiz-card__score">0/5</span>
+          </div>
+          <h2 class="quiz-card__title">Quiz 5</h2>
+          <p class="quiz-card__text">Histoire de Sillans</p>
+        </article>
+
+        <article class="quiz-card">
+          <div class="quiz-card__rating difficulty-3" aria-label="Difficulté 3 sur 3">
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="star is-active" aria-hidden="true">★</span>
+            <span class="quiz-card__score">0/5</span>
+          </div>
+          <h2 class="quiz-card__title">Quiz 6</h2>
+          <p class="quiz-card__text">La nature et ses secrets</p>
+        </article>
+      </div>
+      <!-- Bouton de test rapide — à supprimer avant la mise en production -->
+      <p style="text-align:center;margin:4px 0 0;">
+        <button type="button" id="testFinishBtn" style="font:500 11px 'Lexend',sans-serif;color:#bbb;background:none;border:1px dashed #ddd;border-radius:6px;padding:3px 12px;cursor:pointer;">🧪 Voir l'écran de fin (test)</button>
+      </p>
+    </section>
+
+    <section class="quiz-detail" aria-label="Détail du quiz sélectionné">
+      <h1 class="quiz-detail__title">Quiz 1 - les animaux</h1>
+
+      <div class="quiz-progress">
+        <span class="quiz-progress__label">Question 1/5</span>
+        <div class="quiz-progress__track" aria-hidden="true">
+          <div class="quiz-progress__fill" style="width: 20%;"></div>
+        </div>
+      </div>
+
+      <p class="quiz-detail__question">Quel oiseau bleu et coloré vit dans la région ?</p>
+
+      <div class="quiz-options">
+        <button class="quiz-option" type="button">
+          <span class="quiz-option__letter">A</span>
+          <span class="quiz-option__text">Le moineau</span>
+        </button>
+        <button class="quiz-option" type="button">
+          <span class="quiz-option__letter">B</span>
+          <span class="quiz-option__text">Le rollier d’Europe</span>
+        </button>
+        <button class="quiz-option" type="button">
+          <span class="quiz-option__letter">C</span>
+          <span class="quiz-option__text">Le hibou</span>
+        </button>
+      </div>
+
+      <aside class="quiz-clue" aria-label="Indice du quiz">
+        <div class="quiz-clue__avatar">
+          <img src="images/sillou2.png" alt="Sillou" />
+        </div>
+
+        <div class="quiz-clue__bubble">
+          <p class="quiz-clue__label">L’indice de Sillou</p>
+          <p class="quiz-clue__text">Voici à quoi il ressemble :</p>
+          <div class="quiz-clue__audio-wrap" style="display:none;">
+            <div class="library-card__audio" role="group" aria-label="Contrôles audio de l’indice">
+              <button class="library-card__play" type="button" aria-label="Lire l’audio">
+                <span class="library-card__play-icon" aria-hidden="true">▶</span>
+              </button>
+              <div class="library-card__wave" role="slider" tabindex="0" aria-label="Progression audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="library-card__wave-bar" style="--wave-height: 52%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 74%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 40%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 82%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 58%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 92%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 46%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 68%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 36%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 78%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 50%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 88%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 42%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 66%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 54%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 80%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 38%;"></span>
+                <span class="library-card__wave-bar" style="--wave-height: 72%;"></span>
+              </div>
+            </div>
+            <audio class="library-card__audio-element" preload="metadata">
+              <source src="" type="audio/wav">
+            </audio>
+          </div>
+          <div class="quiz-clue__image-wrap">
+            <img class="quiz-clue__image" src="images/rollier1.png" alt="Rollier d'Europe" />
+            <button class="quiz-clue__zoom-button" aria-label="Voir l'image en grand">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M11 4a7 7 0 1 0 4.95 11.95l4.28 4.28 1.41-1.41-4.28-4.28A7 7 0 0 0 11 4zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z" fill="#F8ECDB"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ── Écran de célébration inter-quiz ── -->
+    <div class="quiz-bravo" id="quizBravo" hidden role="dialog" aria-modal="true" aria-label="Quiz réussi">
+      <div class="quiz-bravo__panel">
+        <div class="quiz-bravo__stars" aria-hidden="true">
+          <span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+        <img class="quiz-bravo__mascot" src="images/sillou1.png" alt="Sillou content">
+        <h2 class="quiz-bravo__title">Bravo !</h2>
+        <p class="quiz-bravo__sub" id="quizBravoSub">Quiz réussi !</p>
+        <div class="quiz-bravo__actions">
+          <button type="button" class="quiz-bravo__btn quiz-bravo__btn--next" id="quizBravoNext">
+            Quiz suivant →
+          </button>
+          <button type="button" class="quiz-bravo__btn quiz-bravo__btn--retry" id="quizBravoRetry">
+            ↺ Refaire ce quiz
+          </button>
+          <a href="carte.html" class="quiz-bravo__btn quiz-bravo__btn--carte">
+            Retour à la carte
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Écran de fin — tous les quiz complétés ── -->
+    <div class="finish-screen" id="quizFinishScreen" hidden aria-label="Félicitations, tous les quiz réussis !">
+      <div class="finish-screen__rays" aria-hidden="true"></div>
+      <h1 class="finish-screen__title">Bravo !</h1>
+      <p class="finish-screen__sub">Tu as réussi tous les quiz !</p>
+      <img class="finish-screen__mascot" src="images/sillou2.png" alt="Sillou célèbre avec toi !">
+      <p class="finish-screen__msg">Tu possèdes désormais toutes les connaissances d'un vrai Gardien de Sillans-la-Cascade.</p>
+      <button type="button" class="finish-screen__btn" id="quizFinishClose">Retour aux quiz</button>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Navigation principale">
+      <a class="bottom-nav__item" href="carte.html">
+        <img src="images/carte.png" alt="">
+        <span>Carte</span>
+      </a>
+      <a class="bottom-nav__item" href="bibliotheque.html">
+        <img src="images/livre.png" alt="">
+        <span>Librairie</span>
+      </a>
+      <a class="bottom-nav__item" href="infos.html">
+        <img src="images/idee.png" alt="">
+        <span>Infos</span>
+      </a>
+      <a class="bottom-nav__item is-active" href="quiz.html" aria-current="page">
+        <img src="images/quiz.png" alt="">
+        <span>Quiz</span>
+      </a>
+    </nav>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cards = document.querySelectorAll('.quiz-card');
+      cards.forEach((card, index) => {
+        card.addEventListener('click', function () {
+          cards.forEach((item) => item.classList.remove('is-selected'));
+          card.classList.add('is-selected');
+          selectQuiz(index);
+        });
+
+        card.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            card.click();
+          }
+        });
+      });
+
+      // Quiz questions and navigation + feedback
+      const quizTitleEl = document.querySelector('.quiz-detail__title');
+      const quizzes = [
+        {
+          title: 'Quiz 1 - les animaux',
+          questions: [
+            {
+              text: "Quel oiseau bleu et coloré vit dans la région ?",
+              clue: "Voici à quoi il ressemble :",
+              image: "images/rollier1.png",
+              options: [
+                { letter: 'A', text: 'Le moineau', correct: false },
+                { letter: 'B', text: 'Le rollier d’Europe', correct: true },
+                { letter: 'C', text: 'Le hibou', correct: false }
+              ]
+            },
+            {
+              text: "Quel petit animal adore les noisettes ?",
+              clue: "Je vis dans les arbres et ma grande queue m’aide à garder l’équilibre.",
+              image: null,
+              options: [
+                { letter: 'A', text: "L’écureuil", correct: true },
+                { letter: 'B', text: 'Le lapin', correct: false },
+                { letter: 'C', text: 'La tortue', correct: false }
+              ]
+            },
+            {
+              text: "Quel animal est malin et vit dans les campagnes ?",
+              clue: "",
+              image: "images/indice-r.png",
+              options: [
+                { letter: 'A', text: 'Le renard roux', correct: true },
+                { letter: 'B', text: 'Le loup gris', correct: false },
+                { letter: 'C', text: 'Le blaireau', correct: false }
+              ]
+            },
+            {
+              text: "Quel animal sort surtout la nuit dans la forêt ?",
+              clue: "Voici sa silhouette :",
+              image: "images/silhouette-s.png",
+              imageStyle: "silhouette",
+              options: [
+                { letter: 'A', text: 'Le sanglier', correct: true },
+                { letter: 'B', text: 'Le cerf', correct: false },
+                { letter: 'C', text: 'La biche', correct: false }
+              ]
+            },
+            {
+              text: "Quel petit animal a des piquants sur le dos ?",
+              clue: "Il se met en boule quand il est surpris.",
+              image: "images/herisson-boule.jpg",
+              options: [
+                { letter: 'A', text: 'Le hérisson', correct: true },
+                { letter: 'B', text: 'La souris', correct: false },
+                { letter: 'C', text: 'La grenouille', correct: false }
+              ]
+            }
+          ]
+        },
+        {
+          title: 'Quiz 2 - la nature',
+          questions: [
+            {
+              text: "Quel petit oiseau chante dans la garrigue ?",
+              clue: "Voici à quoi il ressemble :",
+              image: "images/fauvette.png",
+              options: [
+                { letter: 'A', text: 'Le hibou grand-duc', correct: false },
+                { letter: 'B', text: 'La fauvette pitchou', correct: true },
+                { letter: 'C', text: 'Le pigeon ramier', correct: false }
+              ]
+            },
+            {
+              text: "Quelle tortue vit dans le sud de la France ?",
+              clue: "Je suis une petite tortue terrestre",
+              image: null,
+              options: [
+                { letter: 'A', text: 'La tortue marine', correct: false },
+                { letter: 'B', text: 'La tortue géante', correct: false },
+                { letter: 'C', text: 'La tortue d’Hermann', correct: true }
+              ]
+            },
+            {
+              text: "Quel animal vole la nuit et se repère grâce aux ultrasons ?",
+              clue: "Voici à quoi il ressemble :",
+              image: "images/s-cs.jpg",
+              options: [
+                { letter: 'A', text: 'L’hirondelle', correct: false },
+                { letter: 'B', text: 'Le papillon', correct: false },
+                { letter: 'C', text: 'Le petit rhinolophe (chauve-souris)', correct: true }
+              ]
+            },
+            {
+              text: "Quel animal aime vivre près de l’eau de la cascade ?",
+              clue: "J’aime sauter et je suis vert.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'La grenouille', correct: true },
+                { letter: 'B', text: 'Le hérisson', correct: false },
+                { letter: 'C', text: 'Le renard', correct: false }
+              ]
+            },
+            {
+              text: "Quel insecte fabrique du miel ?",
+              clue: "Voici ma maison :",
+              image: "images/ruche.png",
+              options: [
+                { letter: 'A', text: 'La fourmi', correct: false },
+                { letter: 'B', text: 'L’abeille', correct: true },
+                { letter: 'C', text: 'La sauterelle', correct: false }
+              ]
+            }
+          ]
+        },
+        {
+          title: 'Quiz 3 - la garrigue',
+          questions: [
+            {
+              text: "Quelle fleur ressemble à un petit miroir bleu ?",
+              clue: "Mon nom contient un objet que l’on utilise pour se regarder.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'La lavande', correct: false },
+                { letter: 'B', text: 'L’ophrys miroir', correct: true },
+                { letter: 'C', text: 'Le coquelicot', correct: false }
+              ]
+            },
+            {
+              text: "Quel arbre est typique de la garrigue ?",
+              clue: "",
+              image: "images/chène.JPG",
+              options: [
+                { letter: 'A', text: 'Le chêne vert', correct: true },
+                { letter: 'B', text: 'Le bouleau', correct: false },
+                { letter: 'C', text: 'Le peuplier', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi certaines fleurs attirent les insectes ?",
+              clue: "Les insectes m’aident à fabriquer de nouvelles fleurs.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Pour être pollinisées', correct: true },
+                { letter: 'B', text: 'Pour manger les feuilles', correct: false },
+                { letter: 'C', text: 'Pour faire pousser les arbres', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi les fleurs ont-elles souvent de jolies couleurs ?",
+              clue: "",
+              image: "images/fleur.jpg",
+              options: [
+                { letter: 'A', text: 'Pour faire du bruit', correct: false },
+                { letter: 'B', text: 'Pour devenir plus grandes', correct: false },
+                { letter: 'C', text: 'Pour attirer les insectes', correct: true }
+              ]
+            },
+            {
+              text: "Pourquoi les plantes de la garrigue ont-elles souvent de petites feuilles ?",
+              clue: "Je suis adaptée aux endroits où il peut faire très chaud, en m'hydratant correctement",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Pour perdre moins d’eau', correct: true },
+                { letter: 'B', text: 'Pour faire plus d’ombre', correct: false },
+                { letter: 'C', text: 'Pour pousser sous l’eau', correct: false }
+              ]
+            }
+          ]
+        },
+        {
+          title: 'Quiz 4 - sécurité et nature',
+          questions: [
+            {
+              text: "Que faut-il faire pour éviter les incendies dans la forêt ?",
+              clue: "Une petite étincelle peut devenir un grand danger en été.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Faire un feu pour se réchauffer', correct: false },
+                { letter: 'B', text: 'Ne pas jeter de cigarette et ne pas allumer de feu', correct: true },
+                { letter: 'C', text: 'Brûler des feuilles sèches', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi la baignade est-elle interdite à la cascade ?",
+              clue: "L’eau peut sembler calme, mais certains endroits restent dangereux.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Parce que l’eau est toujours trop froide', correct: false },
+                { letter: 'B', text: 'Parce qu’il y a des risques et pour ne pas déranger la faune et la flore', correct: true },
+                { letter: 'C', text: 'Parce que les poissons ont besoin de place', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi faut-il protéger le tuf autour de la cascade ?",
+              clue: "",
+              image: "images/tuf.jpg",
+              options: [
+                { letter: 'A', text: 'Parce que le tuf est une roche fragile qu’il faut préserver', correct: true },
+                { letter: 'B', text: 'Parce que le tuf est un métal précieux', correct: false },
+                { letter: 'C', text: 'Parce que le tuf empêche les arbres de pousser', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi faut-il rester sur les chemins balisés ?",
+              clue: "Les chemins permettent de découvrir la nature sans l’abîmer.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Pour protéger les plantes et éviter les zones dangereuses', correct: true },
+                { letter: 'B', text: 'Pour marcher seulement plus vite', correct: false },
+                { letter: 'C', text: 'Pour empêcher les animaux de vivre ici', correct: false }
+              ]
+            },
+            {
+              text: "Comment observer un animal sauvage ?",
+              clue: "",
+              image: "images/jumelle.jpg",
+              options: [
+                { letter: 'A', text: 'S’approcher très près pour le toucher', correct: false },
+                { letter: 'B', text: 'Lui donner à manger', correct: false },
+                { letter: 'C', text: 'L’observer de loin sans faire de bruit', correct: true }
+              ]
+            }
+          ]
+        },
+        {
+          title: 'Quiz 5 - patrimoine',
+          questions: [
+            {
+              text: "Pourquoi les villages anciens comme Sillans étaient-ils souvent construits en hauteur ?",
+              clue: "Être en hauteur permettait de mieux voir ce qui arrivait au loin.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Pour être plus proches des nuages', correct: false },
+                { letter: 'B', text: 'Pour mieux se défendre et surveiller les alentours', correct: true },
+                { letter: 'C', text: 'Pour être plus près des animaux sauvages', correct: false }
+              ]
+            },
+            {
+              text: "Comment appelle-t-on la famille noble qui a donné son nom au château de Sillans ?",
+              clue: "Leur nom commence par \"C\" et est écrit sur le château.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Les Castellane', correct: true },
+                { letter: 'B', text: 'Les Chevaliers du Var', correct: false },
+                { letter: 'C', text: 'Les Provençaux', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi l’eau est-elle importante dans l’histoire de Sillans ?",
+              clue: "",
+              image: "images/moulin.jpg",
+              options: [
+                { letter: 'A', text: "Pour empêcher les arbres de pousser", correct: false },
+                { letter: 'B', text: "Pour décorer uniquement les jardins", correct: false },
+                { letter: 'C', text: "Pour faire fonctionner des moulins et aider les habitants", correct: true }
+              ]
+            },
+            {
+              text: "Avec quel matériau les anciens bâtiments de Sillans ont-ils souvent été construits ?",
+              clue: "",
+              image: "images/pierre.jpg",
+              options: [
+                { letter: 'A', text: 'Le plastique', correct: false },
+                { letter: 'B', text: 'La pierre', correct: true },
+                { letter: 'C', text: 'Le verre', correct: false }
+              ]
+            },
+            {
+              text: "Comment appelle-t-on une rue très étroite dans un vieux village ?",
+              clue: "",
+              image: "images/ruelle.jpg",
+              options: [
+                { letter: 'A', text: 'Une ruelle', correct: true },
+                { letter: 'B', text: 'Une autoroute', correct: false },
+                { letter: 'C', text: 'Une avenue moderne', correct: false }
+              ]
+            }
+          ]
+        },
+        {
+          title: 'Quiz 6 - Sillans & nature',
+          questions: [
+            {
+              text: "Quelle est la hauteur de la cascade de Sillans ?",
+              clue: "",
+              image: "images/cascade.jpg",
+              options: [
+                { letter: 'A', text: '15 mètres', correct: false },
+                { letter: 'B', text: '42 mètres', correct: true },
+                { letter: 'C', text: '80 mètres', correct: false }
+              ]
+            },
+            {
+              text: "Comment s’appelle la roche formée avec l’aide de l’eau que l’on trouve près de la cascade ?",
+              clue: "",
+              image: "images/tuf2.jpg",
+              options: [
+                { letter: 'A', text: 'Le tuf', correct: true },
+                { letter: 'B', text: 'Le granit', correct: false },
+                { letter: 'C', text: 'Le marbre', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi les lézards aiment-ils se mettre sur les pierres au soleil ?",
+              clue: "Mon corps se réchauffe grâce à la chaleur autour de moi.",
+              image: null,
+              options: [
+                { letter: 'A', text: 'Pour réguler leur température', correct: true },
+                { letter: 'B', text: 'Pour trouver de la neige', correct: false },
+                { letter: 'C', text: 'Pour construire un nid', correct: false }
+              ]
+            },
+            {
+              text: "Pourquoi les oiseaux chantent-ils dans la nature ?",
+              clue: "",
+              image: "images/oiseaux.png",
+              options: [
+                { letter: 'A', text: 'Pour faire pousser les arbres', correct: false },
+                { letter: 'B', text: 'Pour faire tomber la pluie', correct: false },
+                { letter: 'C', text: 'Pour communiquer et attirer un partenaire', correct: true }
+              ]
+            },
+            {
+              text: "Pourquoi appelle-t-on la région de Sillans un milieu méditerranéen ?",
+              clue: "",
+              image: "images/eau.jpg",
+              options: [
+                { letter: 'A', text: 'Parce qu’il y a toujours de la neige', correct: false },
+                { letter: 'B', text: 'Parce qu’elle est proche de la mer Méditerranée', correct: true },
+                { letter: 'C', text: 'Parce qu’elle est dans le désert', correct: false }
+              ]
+            }
+          ]
+        }
+      ];
+
+      let currentQuiz = 0;
+      let currentQuestion = 0;
+      let quizScore = 0;
+      let quizFinalScores = [null, null, null, null, null, null];
+
+      /* ── Persistance localStorage ── */
+      const QUIZ_KEY = 'sillans_quiz';
+
+      function loadQuizState() {
+        try {
+          const raw = JSON.parse(localStorage.getItem(QUIZ_KEY));
+          if (raw && Array.isArray(raw.scores) && raw.scores.length === 6) return raw;
+        } catch (e) {}
+        return { scores: [null,null,null,null,null,null], activeQuiz: 0, activeQuestion: 0, activeScore: 0 };
+      }
+
+      function saveQuizState() {
+        localStorage.setItem(QUIZ_KEY, JSON.stringify({
+          scores: quizFinalScores,
+          activeQuiz: currentQuiz,
+          activeQuestion: currentQuestion,
+          activeScore: quizScore
+        }));
+      }
+      const questionEl = document.querySelector('.quiz-detail__question');
+      const progressLabel = document.querySelector('.quiz-progress__label');
+      const progressFill = document.querySelector('.quiz-progress__fill');
+      const optionsWrap = document.querySelector('.quiz-options');
+
+      function getCurrentQuiz() {
+        return quizzes[currentQuiz];
+      }
+
+      function getCurrentQuestions() {
+        return getCurrentQuiz().questions;
+      }
+
+      function selectQuiz(index) {
+        if (index < 0 || index >= quizzes.length) return;
+        currentQuiz = index;
+        currentQuestion = 0;
+        quizScore = 0;
+        quizTitleEl.textContent = getCurrentQuiz().title;
+        saveQuizState();
+        renderQuestion(currentQuestion);
+      }
+
+      // feedback element
+      let feedbackEl = document.querySelector('.quiz-feedback');
+      if (!feedbackEl) {
+        feedbackEl = document.createElement('div');
+        feedbackEl.className = 'quiz-feedback';
+        optionsWrap.parentNode.insertBefore(feedbackEl, optionsWrap.nextSibling);
+      }
+
+      function renderQuestion(index) {
+        const questions = getCurrentQuestions();
+        const q = questions[index];
+        questionEl.textContent = q.text;
+        // update clue text and image
+        const clueTextEl = document.querySelector('.quiz-clue__text');
+        const bubbleEl = document.querySelector('.quiz-clue__bubble');
+        const imageWrap = document.querySelector('.quiz-clue__image-wrap');
+        const clueImg = imageWrap ? imageWrap.querySelector('.quiz-clue__image') : null;
+        const audioWrap = document.querySelector('.quiz-clue__audio-wrap');
+        const clueAudio = audioWrap ? audioWrap.querySelector('.library-card__audio-element') : null;
+        const sourceEl = clueAudio ? clueAudio.querySelector('source') : null;
+        if (clueTextEl) clueTextEl.textContent = q.clue || '';
+        if (bubbleEl) {
+          bubbleEl.classList.toggle('is-large', !!q.audio);
+        }
+        if (audioWrap && clueAudio && sourceEl) {
+          if (q.audio) {
+            audioWrap.style.display = '';
+            sourceEl.src = q.audio;
+            clueAudio.load();
+            updateAudioControls();
+          } else {
+            clueAudio.pause();
+            audioWrap.style.display = 'none';
+            resetAudioWave();
+          }
+        }
+        if (imageWrap && clueImg) {
+          if (q.image) {
+            clueImg.src = q.image;
+            clueImg.classList.toggle('quiz-clue__image--silhouette', q.imageStyle === 'silhouette');
+            imageWrap.style.display = '';
+          } else {
+            clueImg.classList.remove('quiz-clue__image--silhouette');
+            imageWrap.style.display = 'none';
+          }
+        }
+        progressLabel.textContent = `Question ${index + 1}/${questions.length}`;
+        progressFill.style.width = `${Math.round(((index + 1) / questions.length) * 100)}%`;
+
+        optionsWrap.innerHTML = q.options.map(opt => `
+          <button class="quiz-option" type="button" data-correct="${opt.correct}">
+            <span class="quiz-option__letter">${opt.letter}</span>
+            <span class="quiz-option__text">${opt.text}</span>
+          </button>
+        `).join('');
+
+        // attach handlers
+        const created = optionsWrap.querySelectorAll('.quiz-option');
+        created.forEach(btn => {
+          btn.addEventListener('click', () => handleChoice(btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+          });
+        });
+      }
+
+      // ── Écran de célébration ────────────────────────────────────────────
+      const bravoEl      = document.getElementById('quizBravo');
+      const bravoSub     = document.getElementById('quizBravoSub');
+      const bravoNextBtn = document.getElementById('quizBravoNext');
+
+      /* Positionne l'origine du sunburst exactement derrière Sillou */
+      function positionQuizRays() {
+        var finishEl = document.getElementById('quizFinishScreen');
+        var mascot   = finishEl ? finishEl.querySelector('.finish-screen__mascot') : null;
+        var raysEl   = finishEl ? finishEl.querySelector('.finish-screen__rays')   : null;
+        if (!mascot || !raysEl) return;
+        var sr = finishEl.getBoundingClientRect();
+        var mr = mascot.getBoundingClientRect();
+        var cx = ((mr.left + mr.width  / 2) - sr.left) / sr.width  * 100;
+        var cy = ((mr.top  + mr.height / 2) - sr.top)  / sr.height * 100;
+        raysEl.style.background = [
+          'conic-gradient(',
+          'from -9deg at ' + cx.toFixed(1) + '% ' + cy.toFixed(1) + '%,',
+          'rgba(196,168,108,.30) 0deg,   rgba(248,236,219,.04) 18deg,',
+          'rgba(196,168,108,.30) 36deg,  rgba(248,236,219,.04) 54deg,',
+          'rgba(196,168,108,.30) 72deg,  rgba(248,236,219,.04) 90deg,',
+          'rgba(196,168,108,.30) 108deg, rgba(248,236,219,.04) 126deg,',
+          'rgba(196,168,108,.30) 144deg, rgba(248,236,219,.04) 162deg,',
+          'rgba(196,168,108,.30) 180deg, rgba(248,236,219,.04) 198deg,',
+          'rgba(196,168,108,.30) 216deg, rgba(248,236,219,.04) 234deg,',
+          'rgba(196,168,108,.30) 252deg, rgba(248,236,219,.04) 270deg,',
+          'rgba(196,168,108,.30) 288deg, rgba(248,236,219,.04) 306deg,',
+          'rgba(196,168,108,.30) 324deg, rgba(248,236,219,.04) 342deg,',
+          'rgba(196,168,108,.30) 360deg)'
+        ].join('');
+      }
+
+      function showBravo(isLast, nextIndex, score, total, completedIdx) {
+        // Dernier quiz → écran plein-écran de fin
+        if (isLast) {
+          const finishEl = document.getElementById('quizFinishScreen');
+          if (finishEl) {
+            finishEl.hidden = false;
+            requestAnimationFrame(function () {
+              requestAnimationFrame(positionQuizRays);
+            });
+          }
+          return;
+        }
+
+        // Quiz intermédiaire → panneau bravo avec score (passé en paramètre, indépendant de currentQuiz)
+        if (!bravoEl) return;
+        const emoji = score === total ? '🎉' : score >= Math.ceil(total / 2) ? '👍' : '💪';
+        bravoSub.innerHTML = 'Tu as eu <strong>' + score + ' / ' + total + '</strong> ' + emoji;
+        if (bravoNextBtn) {
+          bravoNextBtn.hidden = false;
+          bravoNextBtn.onclick = function () {
+            bravoEl.hidden = true;
+            cards.forEach(c => c.classList.remove('is-selected'));
+            if (cards[nextIndex]) cards[nextIndex].classList.add('is-selected');
+            selectQuiz(nextIndex);
+          };
+        }
+        const retryBtn = document.getElementById('quizBravoRetry');
+        if (retryBtn) {
+          retryBtn.onclick = function () {
+            bravoEl.hidden = true;
+            selectQuiz(completedIdx);
+          };
+        }
+        bravoEl.hidden = false;
+      }
+
+      // Bouton retour de l'écran de fin des quiz
+      const quizFinishCloseBtn = document.getElementById('quizFinishClose');
+      if (quizFinishCloseBtn) {
+        quizFinishCloseBtn.addEventListener('click', function () {
+          document.getElementById('quizFinishScreen').hidden = true;
+        });
+      }
+
+      // Bouton de test — déclenche directement l'écran de fin
+      const testFinishBtn = document.getElementById('testFinishBtn');
+      if (testFinishBtn) {
+        testFinishBtn.addEventListener('click', function () {
+          showBravo(true, quizzes.length);
+        });
+      }
+
+      function advanceQuiz() {
+        feedbackEl.textContent = '';
+        const questions = getCurrentQuestions();
+        if (currentQuestion < questions.length - 1) {
+          currentQuestion++;
+          saveQuizState();
+          renderQuestion(currentQuestion);
+        } else {
+          // Fin du quiz — capturer les infos avant de modifier l'état
+          const completedIdx   = currentQuiz;
+          const completedScore = quizScore;
+          const completedTotal = questions.length;
+          const nextQuizIndex  = completedIdx + 1;
+
+          // Sauvegarder le score final
+          quizFinalScores[completedIdx] = completedScore;
+
+          // Mettre à jour la carte du quiz terminé
+          try {
+            const completedCard = cards && cards[completedIdx] ? cards[completedIdx] : null;
+            if (completedCard) {
+              const scoreEl = completedCard.querySelector('.quiz-card__score');
+              if (scoreEl) scoreEl.textContent = completedScore + '/' + completedTotal;
+              const textEl = completedCard.querySelector('.quiz-card__text');
+              if (textEl) textEl.textContent = 'Quiz terminé !';
+              completedCard.classList.add('is-complete');
+            }
+          } catch (e) { /* ignore */ }
+
+          // Pointer vers le prochain quiz pour la restauration (évite de re-jouer la dernière question)
+          currentQuiz     = Math.min(nextQuizIndex, quizzes.length - 1);
+          currentQuestion = 0;
+          quizScore       = 0;
+          saveQuizState();
+
+          showBravo(nextQuizIndex >= quizzes.length, nextQuizIndex, completedScore, completedTotal, completedIdx);
+        }
+      }
+
+      function handleChoice(button) {
+        // Empêcher double-clic
+        if (button.disabled) return;
+
+        const correct = button.dataset.correct === 'true';
+        const allBtns = optionsWrap.querySelectorAll('.quiz-option');
+
+        // Désactiver tous les boutons immédiatement
+        allBtns.forEach(b => {
+          b.disabled = true;
+          if (b !== button) b.classList.add('is-disabled');
+        });
+
+        if (correct) {
+          quizScore++;
+          button.classList.add('is-correct');
+          feedbackEl.innerHTML = '<span style="color:#4a8f2a;font-weight:700">✓ Bonne réponse !</span>';
+          setTimeout(advanceQuiz, 1600);
+        } else {
+          button.classList.add('is-wrong');
+          // Révèle la bonne réponse
+          allBtns.forEach(b => {
+            if (b.dataset.correct === 'true') {
+              b.classList.remove('is-disabled');
+              b.classList.add('is-correct');
+            }
+          });
+          feedbackEl.innerHTML = '<span style="color:#d95050;font-weight:700">✗ Pas tout à fait…</span>';
+          setTimeout(advanceQuiz, 2400);
+        }
+      }
+
+      // initialize
+      const audioWrap = document.querySelector('.quiz-clue__audio-wrap');
+      const clueAudio = audioWrap ? audioWrap.querySelector('.library-card__audio-element') : null;
+      const playButton = audioWrap ? audioWrap.querySelector('.library-card__play') : null;
+      const wave = audioWrap ? audioWrap.querySelector('.library-card__wave') : null;
+      const waveBars = wave ? Array.from(wave.querySelectorAll('.library-card__wave-bar')) : [];
+
+      function updatePlayState() {
+        if (!clueAudio || !playButton || !wave) return;
+        const playing = !clueAudio.paused;
+        playButton.classList.toggle('is-playing', playing);
+        wave.classList.toggle('is-playing', playing);
+        playButton.setAttribute('aria-label', playing ? 'Mettre l’audio en pause' : 'Lire l’audio');
+        playButton.innerHTML = playing
+          ? '<span class="library-card__play-icon" aria-hidden="true">❚❚</span>'
+          : '<span class="library-card__play-icon" aria-hidden="true">▶</span>';
+      }
+
+      function resetAudioWave() {
+        if (!wave || !waveBars.length) return;
+        wave.setAttribute('aria-valuenow', '0');
+        waveBars.forEach(bar => bar.classList.remove('is-active'));
+      }
+
+      function updateAudioControls() {
+        if (!clueAudio || !wave || !waveBars.length) return;
+        const duration = clueAudio.duration;
+        if (!Number.isFinite(duration) || duration <= 0) {
+          resetAudioWave();
+          return;
+        }
+        const percentage = (clueAudio.currentTime / duration) * 100;
+        const activeBars = Math.round((percentage / 100) * waveBars.length);
+        wave.setAttribute('aria-valuenow', String(Math.round(percentage)));
+        waveBars.forEach((bar, index) => {
+          bar.classList.toggle('is-active', index < activeBars);
+        });
+      }
+
+      async function toggleAudio() {
+        if (!clueAudio) return;
+        if (clueAudio.paused) {
+          try {
+            await clueAudio.play();
+          } catch {
+            return;
+          }
+        } else {
+          clueAudio.pause();
+        }
+      }
+
+      function seekToPointer(audio, waveElement, event) {
+        if (!audio || !Number.isFinite(audio.duration) || audio.duration <= 0) {
+          return;
+        }
+        const rect = waveElement.getBoundingClientRect();
+        const x = Math.max(0, Math.min(event.clientX - rect.left, rect.width));
+        audio.currentTime = (x / rect.width) * audio.duration;
+      }
+
+      if (playButton) {
+        playButton.addEventListener('click', event => {
+          event.stopPropagation();
+          toggleAudio();
+        });
+      }
+
+      if (wave) {
+        wave.addEventListener('click', async event => {
+          event.stopPropagation();
+          seekToPointer(clueAudio, wave, event);
+          updateAudioControls();
+          if (clueAudio && clueAudio.paused) {
+            try {
+              await clueAudio.play();
+            } catch {
+              return;
+            }
+          }
+        });
+
+        wave.addEventListener('keydown', async event => {
+          if (event.key !== 'Enter' && event.key !== ' ') {
+            return;
+          }
+          event.preventDefault();
+          toggleAudio();
+        });
+      }
+
+      if (clueAudio) {
+        clueAudio.addEventListener('loadedmetadata', updateAudioControls);
+        clueAudio.addEventListener('timeupdate', updateAudioControls);
+        clueAudio.addEventListener('play', updatePlayState);
+        clueAudio.addEventListener('pause', updatePlayState);
+        clueAudio.addEventListener('ended', () => {
+          updatePlayState();
+          if (wave) wave.setAttribute('aria-valuenow', '100');
+        });
+      }
+
+      /* ── Restauration de l'état sauvegardé ── */
+      (function () {
+        const saved = loadQuizState();
+        quizFinalScores = saved.scores;
+
+        // Restaurer les scores sur les cartes
+        cards.forEach(function (card, idx) {
+          if (quizFinalScores[idx] !== null) {
+            const scoreEl = card.querySelector('.quiz-card__score');
+            if (scoreEl) scoreEl.textContent = quizFinalScores[idx] + '/5';
+            const textEl = card.querySelector('.quiz-card__text');
+            if (textEl) textEl.textContent = 'Quiz terminé !';
+            card.classList.add('is-complete');
+          }
+        });
+
+        // Restaurer le quiz et la question en cours
+        currentQuiz     = saved.activeQuiz    || 0;
+        currentQuestion = saved.activeQuestion || 0;
+        quizScore       = saved.activeScore    || 0;
+
+        // Sécurité : si le quiz actif est déjà terminé, avancer au premier non-terminé
+        if (quizFinalScores[currentQuiz] !== null) {
+          const nextFree = quizFinalScores.findIndex(s => s === null);
+          currentQuiz     = nextFree >= 0 ? nextFree : quizzes.length - 1;
+          currentQuestion = 0;
+          quizScore       = 0;
+        }
+
+        cards.forEach(c => c.classList.remove('is-selected'));
+        if (cards[currentQuiz]) cards[currentQuiz].classList.add('is-selected');
+        quizTitleEl.textContent = quizzes[currentQuiz].title;
+        renderQuestion(currentQuestion);
+      }());
+
+      // Image zoom modal for clue image
+      const zoomButtons = document.querySelectorAll('.quiz-clue__zoom-button');
+      const modal = document.createElement('div');
+      modal.className = 'image-modal';
+      modal.setAttribute('aria-hidden', 'true');
+      modal.innerHTML = `
+        <div class="image-modal__overlay" tabindex="-1"></div>
+        <div class="image-modal__content">
+          <button class="image-modal__close" aria-label="Fermer">×</button>
+          <img class="image-modal__img" src="" alt="Image agrandie" />
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      const modalImg = modal.querySelector('.image-modal__img');
+      const modalClose = modal.querySelector('.image-modal__close');
+      const modalOverlay = modal.querySelector('.image-modal__overlay');
+
+      zoomButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const img = btn.parentElement.querySelector('img');
+          if (!img) return;
+          modalImg.src = img.src;
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('no-scroll');
+          modal.querySelector('.image-modal__close').focus();
+        });
+      });
+
+      function closeModal(){
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
+        modalImg.src = '';
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', closeModal);
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+      });
+    });
+  </script>
+</body>
+</html>
